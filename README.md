@@ -8,7 +8,7 @@ Currently it demonstrates the following features/concepts:
 
 1. Toggle (show/hide) Flyouts in a modular MVVM structured App, from everywhere in your app
 
-2. Add/Remove a MahApps HamburgerMenu Entries from your Modules
+2. Add/Remove MahApps HamburgerMenu Entries from your Modules
 
 3. Add/Remove Flyouts from your Modules
 
