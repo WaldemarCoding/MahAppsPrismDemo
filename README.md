@@ -1,4 +1,4 @@
-# MahAppsMetroPrismDemo
+# MahAppsPrismDemo
 
 Sample Application showing modular loosely coupled program setup with some cross-functionality features between 
 [MahApps.Metro](https://github.com/MahApps/MahApps.Metro) and
