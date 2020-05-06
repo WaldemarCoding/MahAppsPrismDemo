@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>PrismApp</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0775" />
+    <PackageReference Include="Prism.DryIoc" Version="7.2.0.1422" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MahApps.Metro.Prism.Module1\MahApps.Metro.PrismModule1.csproj" />
+    <ProjectReference Include="..\MahApps.Metro.Prism.Module2\MahApps.Metro.PrismModule2.csproj" />
+    <ProjectReference Include="..\MahApps.Metro.PrismApp.Core\MahApps.Metro.PrismApp.Core.csproj" />
+  </ItemGroup>
+</Project>

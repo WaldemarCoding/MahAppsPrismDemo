@@ -1,0 +1,13 @@
+﻿<mah:HamburgerMenuItemCollection x:Class="MahApps.Metro.PrismModule2.Views.Module2Menu"
+                                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                 xmlns:mvvm="http://prismlibrary.com/"
+                                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                                 mvvm:ViewModelLocator.AutoWireViewModel="True"
+                                 mc:Ignorable="d">
+    <mah:HamburgerMenuHeaderItem Label="Module 2" />
+    <mah:HamburgerMenuItem Label="go to ViewC" CommandParameter="ViewC"/>
+    <mah:HamburgerMenuSeparatorItem />
+</mah:HamburgerMenuItemCollection>

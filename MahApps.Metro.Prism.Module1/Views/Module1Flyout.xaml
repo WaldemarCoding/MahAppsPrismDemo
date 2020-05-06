@@ -1,0 +1,11 @@
+﻿<mah:Flyout x:Class="MahApps.Metro.PrismModule1.Views.Module1Flyout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             Tag="{Binding Tag}"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <TextBlock>Hello from Module 1</TextBlock>
+    </Grid>
+</mah:Flyout>

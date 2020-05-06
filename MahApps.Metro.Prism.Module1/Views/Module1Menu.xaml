@@ -1,0 +1,15 @@
+﻿<mah:HamburgerMenuItemCollection x:Class="MahApps.Metro.PrismModule1.Views.Modul1Menu"
+                                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                 xmlns:mvvm="http://prismlibrary.com/"
+                                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                                 mvvm:ViewModelLocator.AutoWireViewModel="True"
+                                 mc:Ignorable="d">
+    <mah:HamburgerMenuHeaderItem Label="Module 1" />
+    <mah:HamburgerMenuIconItem Label="go to ViewA" Icon="{iconPacks:Material Kind=Home}" CommandParameter="ViewA"/>
+    <mah:HamburgerMenuIconItem Label="go to ViewB" Icon="{iconPacks:Material Kind=Account}" CommandParameter="ViewB"/>
+    <mah:HamburgerMenuSeparatorItem />
+</mah:HamburgerMenuItemCollection>

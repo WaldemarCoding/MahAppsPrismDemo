@@ -1,0 +1,131 @@
+﻿<mah:MetroWindow x:Class="MahApps.Metro.PrismApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:core="clr-namespace:MahApps.Metro.PrismApp.Core;assembly=MahApps.Metro.PrismApp.Core"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:prismApp="clr-namespace:MahApps.Metro.PrismApp"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="600" Width="800" >
+    <Window.Resources>
+        <Style x:Key="CustomFlyoutStyle"
+               BasedOn="{StaticResource {x:Type mah:Flyout}}"
+               TargetType="{x:Type mah:Flyout}">
+            <Setter Property="Header" Value="{Binding Header}" />
+            <Setter Property="IsOpen" Value="{Binding IsOpen}" />
+            <Setter Property="Position" Value="{Binding Position}" />
+            <Setter Property="Theme" Value="{Binding Theme}" />
+        </Style>
+
+        <Style x:Key="CloseableTabItem" TargetType="{x:Type TabItem}">
+            <Setter Property="Header" Value="{Binding DataContext.Title}"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <ContentControl VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,7,0" Content="{Binding}"/>
+                            <Button Grid.Column="1" Content="X" BorderThickness="0" 
+                                    Background="Transparent" 
+                                    BorderBrush="Transparent">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="Click">
+                                        <prismApp:CloseTabAction/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type mah:HamburgerMenuItem}">
+            <Grid ToolTip="{Binding ToolTip}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ContentControl
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{Binding Icon}"
+                    Focusable="False" />
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    Text="{Binding Label}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl x:Name="FlyoutsControl" 
+            prism:RegionManager.RegionName="{x:Static core:RegionNames.FlyoutRegion}"
+            ItemContainerStyle="{StaticResource CustomFlyoutStyle}"/>
+    </mah:MetroWindow.Flyouts>
+    <TabControl mah:TabControlHelper.CloseButtonEnabled="True">
+        <TabItem Header="Flyouts">
+
+            <UniformGrid Columns="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                <Button MinWidth="90"
+                        Margin="2"
+                        Command="{Binding ToggleFlyoutCommand}" 
+                        CommandParameter="FlyoutTop"
+                        Content="Show Top" >
+                </Button>
+
+                <Button MinWidth="90"
+                        Margin="2"
+                        Command="{Binding ToggleFlyoutCommand}" 
+                        CommandParameter="FlyoutBottom"
+                        Content="Show Bottom">
+                </Button>
+
+                <Button MinWidth="90"
+                        Margin="2"
+                        Command="{Binding ToggleFlyoutCommand}" 
+                        CommandParameter="FlyoutLeft"
+                        Content="Show Left" >
+                </Button>
+
+                <Button MinWidth="90"
+                        Margin="2"
+                        Command="{Binding ToggleFlyoutCommand}" 
+                        CommandParameter="FlyoutRight"
+                        Content="Show Right" >
+                </Button>
+            </UniformGrid>
+        </TabItem>
+
+        <TabItem Header="Modular Setup">
+            <mah:HamburgerMenu  x:Name="HamburgerMenuControl"
+                            ItemTemplate="{StaticResource MenuItemTemplate}"
+                            DisplayMode="CompactInline"
+                            prism:RegionManager.RegionName="{x:Static core:RegionNames.MenuRegion}"
+                            Loaded="HamburgerMenuControl_OnLoaded" 
+                            ItemClick="HamburgerMenuControl_OnItemClick"
+                            IsPaneOpen="True">
+                <mah:HamburgerMenu.Content>
+                    <!-- Don't forget to SetRegionName and SetRegionManager! See Code-Behind! -->
+                    <UniformGrid Columns="1">
+                        <ContentControl x:Name="HamburgerMenuContent" 
+                                        prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"/>
+                        <TabControl x:Name="HamburgerMenuTabContent" ItemContainerStyle="{StaticResource CloseableTabItem}"
+                                    prism:RegionManager.RegionName="{x:Static core:RegionNames.TabRegion}"/>
+                    </UniformGrid>
+                </mah:HamburgerMenu.Content>
+            </mah:HamburgerMenu>
+        </TabItem>
+    </TabControl>
+</mah:MetroWindow>
